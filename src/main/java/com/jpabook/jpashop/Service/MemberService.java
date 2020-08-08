@@ -59,4 +59,12 @@ public class MemberService {
     public Member findOne(Long memberId){
         return memberRepository.findOne(memberId);
     }
+
+    @Transactional
+    public void update(Long id, String name) {
+        //dirty checking
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+        //종료되면 aop transactional 끝나면 flush , commit
+    }
 }
