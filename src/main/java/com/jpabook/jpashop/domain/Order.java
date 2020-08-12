@@ -1,9 +1,6 @@
 package com.jpabook.jpashop.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.aspectj.weaver.ast.Or;
 
 import javax.persistence.*;
@@ -16,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString
 public class Order {
     @Id @GeneratedValue
     @Column(name = "order_id")
