@@ -2,9 +2,8 @@ package com.jpabook.jpashop.Service;
 
 import com.jpabook.jpashop.domain.Member;
 import com.jpabook.jpashop.repository.MemberRepository;
-import lombok.AllArgsConstructor;
+import com.jpabook.jpashop.repository.MemberRepositoryOld;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,13 +56,13 @@ public class MemberService {
 
 //    @Transactional(readOnly = true) //조회의 경우 성능 최적화 가능.
     public Member findOne(Long memberId){
-        return memberRepository.findOne(memberId);
+        return memberRepository.findById(memberId).get();
     }
 
     @Transactional
     public void update(Long id, String name) {
         //dirty checking
-        Member member = memberRepository.findOne(id);
+        Member member = memberRepository.findById(id).get();
         member.setName(name);
         //종료되면 aop transactional 끝나면 flush , commit
     }

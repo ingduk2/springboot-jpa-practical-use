@@ -2,6 +2,7 @@ package com.jpabook.jpashop.domain;
 
 import lombok.*;
 import org.aspectj.weaver.ast.Or;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,6 +24,7 @@ public class Order {
     @JoinColumn(name="member_id")
     private Member member;
 
+    @BatchSize(size = 1000) //collection
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL) //아래에 의해 매핑이 된
     private List<OrderItem> orderItems = new ArrayList<>();
 

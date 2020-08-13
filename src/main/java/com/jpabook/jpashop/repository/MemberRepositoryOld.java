@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class MemberRepository {
+public class MemberRepositoryOld {
 
 //    @PersistenceContext
 //    @Autowired //springboot jpa 가 바꾸게 해줌. 그러면 lombok 으로 가능
